@@ -1,6 +1,8 @@
 import React from "react";
 import Header from "./Header";
 import SearchBar from "./SearchBar";
+import Saved from "./Saved";
+import TinderCard from "./TinderCard";
 import './App.css';
 
 function App() {
@@ -14,12 +16,15 @@ function App() {
       <SearchBar />
 
       {/* Tinder Cards */}
+      <TinderCard />
+
 
       {/* Dislike Button on Left */}
 
       {/* Like button on right */}
 
       {/* Saved button */}
+      <Saved />
 
     </div>
   );
