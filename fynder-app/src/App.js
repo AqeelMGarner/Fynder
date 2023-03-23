@@ -3,6 +3,8 @@ import Header from "./Header";
 import SearchBar from "./SearchBar";
 import Saved from "./Saved";
 import TinderCard from "./TinderCard";
+import LikeButton from "./LikeButton";
+import DislikeButton from "./DislikeButton";
 import './App.css';
 
 function App() {
@@ -14,15 +16,17 @@ function App() {
 
       {/* Search bar */}
       <SearchBar />
+      <div className="body">
 
-      {/* Tinder Cards */}
-      <TinderCard />
+        {/* Dislike Button on Left */}
+        <DislikeButton />
+        {/* Tinder Cards */}
+        <TinderCard />
 
 
-      {/* Dislike Button on Left */}
-
-      {/* Like button on right */}
-
+        {/* Like button on right */}
+        <LikeButton />
+      </div>
       {/* Saved button */}
       <Saved />
 
