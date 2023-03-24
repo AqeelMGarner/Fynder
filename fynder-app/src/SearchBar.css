@@ -1,0 +1,23 @@
+.navbar {
+    align-items: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: auto;
+}
+
+input[type="search"] {
+    width: 350px;
+    height: 50px;
+    border-radius: 25px;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+.submit {
+    width: 75px;
+    height: 50px;
+    margin-left: 5px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(68, 66, 66);
+    font-weight: lighter;
+    border-radius: 25px;
+    font-family: "Lucida Console", "Courier New", monospace;
+  }  
