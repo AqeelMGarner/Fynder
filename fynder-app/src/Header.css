@@ -1,0 +1,9 @@
+.fynderTitle {
+    font-size: 70px;
+    padding-top: 40px;
+    font-family: monospace;
+    font-weight: lighter;
+    color: white;
+    position: relative;
+    text-align: center;
+}
