@@ -5,7 +5,7 @@ function SearchBar() {
     const [searchQuery, setSearchQuery] = useState("");
     const [longitude, setLongitude] = useState("");
     const [latitude, setLatitude] = useState("");
-    const [xid, setXid] = useState("");
+    const [xids, setXids] = useState([]);
 
     // this is to get the longitude and latitude
     const handleSearch = (event) => {
@@ -31,6 +31,7 @@ function SearchBar() {
         setSearchQuery(event.target.value);
     }
 
+
     // This is to parse the longitude and latitude into an xid
     const handlePlaces = () => {
         fetch(`https://opentripmap-places-v1.p.rapidapi.com/en/places/radius?lat=${latitude}&lon=${longitude}&radius=500&limit=20&format=json`, {
@@ -41,9 +42,18 @@ function SearchBar() {
             }
         })
             .then(response => response.json())
-            .then(properties => console.log(properties[0].xid))
+            .then(properties => {
+                const xids = [];
+                for (let i = 0; i < properties.length; i++) {
+                    xids.push(properties[i].xid);
+                }
+                setXids(xids); // update the xids state variable with the xids array
+            })
             .catch(error => console.log(error));
     }
+
+
+
 
     return (
         <div>
