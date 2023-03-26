@@ -75,17 +75,19 @@ function SearchBar(props) {
             fetch(`https://opentripmap-places-v1.p.rapidapi.com/en/places/xid/${xid}`, options)
                 .then(response => response.json())
                 .then(response => {
-                    const image = response.image;
-                    const url = response.url;
-                    const name = response.name;
+                    if (response.preview.source) {
+                        const image = response.preview.source;
+                        const url = response.wikipedia;
+                        const name = response.name;
 
-                    const placeInfoObj = {
-                        name: name,
-                        image: image,
-                        url: url,
-                    };
-                    // console.log(placeInfoObj);
-                    newPlacesInfo.push(placeInfoObj);
+                        const placeInfoObj = {
+                            name: name,
+                            image: image,
+                            url: url,
+                        };
+                        // console.log(placeInfoObj);
+                        newPlacesInfo.push(placeInfoObj);
+                    }
                 })
                 .catch(err => console.error(err))
         )).then(() => {
