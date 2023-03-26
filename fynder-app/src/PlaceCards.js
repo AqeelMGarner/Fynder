@@ -1,43 +1,4 @@
-// import React, { useEffect, useState } from 'react';
-// import TinderCard from "react-tinder-card";
-// import "./PlaceCards.css";
-// import { placeInfoObj } from './SearchBar';
 
-
-
-// function PlaceCards(props) {
-//     const [places, setPlaces] = useState([placeInfoObj]);
-//     console.log(places);
-
-//     useEffect(() => {
-//         // This will run ONCE when the component loads, and never again.
-
-//     }, [places]);
-
-//     return (
-//         <div>
-
-//             <div className="PlaceCards__cardContainer">
-//                 {places.map((placeInfoObj) => (
-//                     <TinderCard
-//                         className="swipe"
-//                         key={placeInfoObj.name}
-//                         preventSwipe={["up", "down"]}
-//                     >
-//                         <div
-//                             style={{ backgroundImage: `url(${placeInfoObj.url})` }}
-//                             className="card">
-//                             <h3>{placeInfoObj.name}</h3>
-//                         </div>
-//                     </TinderCard>
-//                 )
-//                 )}
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default PlaceCards
 
 import React, { useEffect, useState } from 'react';
 import TinderCard from "react-tinder-card";
