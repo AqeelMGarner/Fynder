@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./SearchBar.css";
+import PlaceCards from './PlaceCards';
 
-function SearchBar() {
+function SearchBar(props) {
     const [searchQuery, setSearchQuery] = useState("");
     const [longitude, setLongitude] = useState("");
     const [latitude, setLatitude] = useState("");
     const [xids, setXids] = useState([]);
+    const [placesInfo, setPlacesInfo] = useState([]);
 
     // this is to get the longitude and latitude
     const handleSearch = (event) => {
@@ -22,6 +24,7 @@ function SearchBar() {
                 setLongitude(properties.lon);
                 setLatitude(properties.lat);
                 handlePlaces(); // call handlePlaces function after the data has been fetched
+
             })
             .catch(error => console.log(error));
 
@@ -48,14 +51,52 @@ function SearchBar() {
                     xids.push(properties[i].xid);
                 }
                 setXids(xids); // update the xids state variable with the xids array
+
             })
             .catch(error => console.log(error));
     }
 
+    useEffect(() => {
+        handlePlacesInfo();
+    }, [xids]);
 
+    const handlePlacesInfo = () => {
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '57596d09f9msh76da75d1881374dp1dd71ejsna28780aa4c28',
+                'X-RapidAPI-Host': 'opentripmap-places-v1.p.rapidapi.com'
+            }
+        };
 
+        const newPlacesInfo = [];
+
+        Promise.all(xids.map((xid) =>
+            fetch(`https://opentripmap-places-v1.p.rapidapi.com/en/places/xid/${xid}`, options)
+                .then(response => response.json())
+                .then(response => {
+                    const image = response.image;
+                    const url = response.url;
+                    const name = response.name;
+
+                    const placeInfoObj = {
+                        name: name,
+                        image: image,
+                        url: url,
+                    };
+                    // console.log(placeInfoObj);
+                    newPlacesInfo.push(placeInfoObj);
+                })
+                .catch(err => console.error(err))
+        )).then(() => {
+            // console.log(newPlacesInfo);
+            props.setPlacesInfo(newPlacesInfo); // this should update the placesInfo in the parent component
+        });
+        // console.log(placesInfo);
+    };
 
     return (
+
         <div>
             <nav class="navbar bg-light">
                 <div class="container-fluid" className='navBar'>
