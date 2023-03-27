@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./SearchBar.css";
-import PlaceCards from './PlaceCards';
+
 
 function SearchBar(props) {
     const [searchQuery, setSearchQuery] = useState("");
@@ -37,7 +37,7 @@ function SearchBar(props) {
 
     // This is to parse the longitude and latitude into an xid
     const handlePlaces = () => {
-        fetch(`https://opentripmap-places-v1.p.rapidapi.com/en/places/radius?lat=${latitude}&lon=${longitude}&radius=500&limit=20&format=json`, {
+        fetch(`https://opentripmap-places-v1.p.rapidapi.com/en/places/radius?lat=${latitude}&lon=${longitude}&radius=1000&limit=100&format=json`, {
             "method": "GET",
             "headers": {
                 "X-RapidAPI-Key": "57596d09f9msh76da75d1881374dp1dd71ejsna28780aa4c28",
@@ -75,15 +75,17 @@ function SearchBar(props) {
             fetch(`https://opentripmap-places-v1.p.rapidapi.com/en/places/xid/${xid}`, options)
                 .then(response => response.json())
                 .then(response => {
-                    if (response.preview.source) {
+                    if (response.preview.source && response.wikipedia_extracts.text) {
                         const image = response.preview.source;
-                        const url = response.wikipedia;
+                        const text = response.wikipedia_extracts.text;
                         const name = response.name;
+
 
                         const placeInfoObj = {
                             name: name,
                             image: image,
-                            url: url,
+                            text: text,
+
                         };
                         // console.log(placeInfoObj);
                         newPlacesInfo.push(placeInfoObj);

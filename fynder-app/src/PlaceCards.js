@@ -29,7 +29,11 @@ function PlaceCards(props) {
                             style={{ backgroundImage: `url(${place.image})` }}
                             className="card"
                         >
-                            <h3>{place.name}</h3>
+                            <div className="cardInfo">
+                                <h3>{place.name}</h3>
+                                <p>{place.text}</p>
+                            </div>
+
                         </div>
                     </TinderCard>
                 ))}
