@@ -5,12 +5,12 @@ import { IconButton } from '@mui/material';
 function LikeButton() {
     const [place, setPlace] = useState([]);
     useEffect(() => {
-    localStorage.setItem("place", JSON.stringify(place));
-     }, [place]); 
+        localStorage.setItem("place", JSON.stringify(place));
+    }, [place]);
     return (
         <div>
             <IconButton>
-                <ThumbUpIcon className="ThumbUpIcon" fontSize="large"onClick = {LikeButton}/>
+                <ThumbUpIcon className="ThumbUpIcon" fontSize="large" onClick={LikeButton} />
             </IconButton>
         </div>
     )
