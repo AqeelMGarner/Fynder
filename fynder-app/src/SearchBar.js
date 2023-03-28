@@ -3,6 +3,7 @@ import "./SearchBar.css";
 
 
 
+
 function SearchBar(props) {
     const [searchQuery, setSearchQuery] = useState("");
     const [longitude, setLongitude] = useState("");
