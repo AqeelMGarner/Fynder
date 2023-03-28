@@ -1,7 +1,7 @@
-
-
+import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import TinderCard from "react-tinder-card";
+import Buttons from './Buttons';
 import "./PlaceCards.css";
 
 function PlaceCards(props) {
@@ -20,6 +20,7 @@ function PlaceCards(props) {
         <div>
             <div className="PlaceCards__cardContainer">
                 {places.map((place) => (
+                    
                     <TinderCard
                         className="swipe"
                         key={place.name}
@@ -36,8 +37,11 @@ function PlaceCards(props) {
 
                         </div>
                     </TinderCard>
+                    
+                    
                 ))}
             </div>
+
         </div>
     );
 }

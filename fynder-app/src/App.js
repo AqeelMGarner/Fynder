@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import Header from "./Header";
 import SearchBar from "./SearchBar";
-import Saved from "./Saved";
 import PlaceCards from "./PlaceCards";
-import LikeButton from "./LikeButton";
-import DislikeButton from "./DislikeButton";
+import Buttons from "./Buttons";
 import './App.css';
 
 function App() {
@@ -24,20 +22,12 @@ function App() {
 
       <div className="body">
 
-        {/* Dislike Button on Left */}
-        <DislikeButton />
-
         {/* Tinder Cards */}
         <PlaceCards placesInfo={placesInfo} />
 
-
-        {/* Like button on right */}
-        <LikeButton />
       </div>
 
-      {/* Saved button */}
-      <Saved />
-
+      <Buttons />
     </div>
   );
 }
