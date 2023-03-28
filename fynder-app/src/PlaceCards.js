@@ -12,9 +12,9 @@ function PlaceCards(props) {
         setPlaces(props.placesInfo);
     }, [props.placesInfo]);
 
-    useEffect(() => {
-        console.log(places); // log the places object whenever it changes
-    }, [places]);
+    // useEffect(() => {
+    //     console.log(places); // log the places object whenever it changes
+    // }, [places]);
 
     return (
         <div>
