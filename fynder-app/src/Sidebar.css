@@ -1,0 +1,32 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+    width: 30%;
+}
+
+.place-name {
+    font-size: 15px;
+}
+
+
+ul {
+    list-style: none;
+}
+
+img {
+    border-radius: 50%;
+    width: 20%;
+    height: auto;
+}

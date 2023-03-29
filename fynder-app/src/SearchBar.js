@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { GlobalContext } from "./context/GlobalContext";
 import "./SearchBar.css";
 
 
@@ -9,7 +10,7 @@ function SearchBar(props) {
     const [longitude, setLongitude] = useState("");
     const [latitude, setLatitude] = useState("");
     const [xids, setXids] = useState([]);
-    const [placesInfo, setPlacesInfo] = useState([]);
+    const { setPlacesInfo } = useContext(GlobalContext);
 
     const handleSearch = (event) => {
         event.preventDefault();
@@ -39,7 +40,7 @@ function SearchBar(props) {
     }
 
     const handlePlaces = () => {
-        fetch(`https://opentripmap-places-v1.p.rapidapi.com/en/places/radius?lat=${latitude}&lon=${longitude}&radius=1000&limit=5&format=json`, {
+        fetch(`https://opentripmap-places-v1.p.rapidapi.com/en/places/radius?lat=${latitude}&lon=${longitude}&radius=1000&limit=20&format=json`, {
             "method": "GET",
             "headers": {
                 "X-RapidAPI-Key": "57596d09f9msh76da75d1881374dp1dd71ejsna28780aa4c28",
@@ -91,7 +92,7 @@ function SearchBar(props) {
                 })
                 .catch(err => console.error(err))
         )).then(() => {
-            props.setPlacesInfo(newPlacesInfo);
+            setPlacesInfo(newPlacesInfo);
         });
     };
 
