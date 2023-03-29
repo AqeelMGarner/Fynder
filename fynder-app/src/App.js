@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import Header from "./Header";
 import SearchBar from "./SearchBar";
 import PlaceCards from "./PlaceCards";
+import Sidebar from "./Sidebar";
 import Buttons from "./Buttons";
+import { GlobalProvider } from "./context/GlobalContext";
 import './App.css';
 
 function App() {
@@ -12,22 +14,26 @@ function App() {
 
   return (
     <div className="App">
+      <GlobalProvider>
+        <Header />
 
-      {/* Header */}
-      <Header />
-
-      {/* Search bar */}
-      <SearchBar setPlacesInfo={setPlacesInfo} />
+        {/* Search bar */}
+        <SearchBar />
 
 
-      <div className="body">
+        <div className="body">
 
-        {/* Tinder Cards */}
-        <PlaceCards placesInfo={placesInfo} />
+          {/* Tinder Cards */}
+          <PlaceCards />
 
-      </div>
 
-      <Buttons />
+
+
+        </div>
+        <Sidebar />
+
+      </GlobalProvider>
+
     </div>
   );
 }
