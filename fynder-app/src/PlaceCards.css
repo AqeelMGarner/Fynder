@@ -49,3 +49,20 @@
 .swipe {
     position: absolute;
 }
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+}
+
+.buttons button:hover {
+    transform: scale(1.05);
+}
