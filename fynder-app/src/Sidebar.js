@@ -13,7 +13,7 @@ function Sidebar() {
         left: sidebarOpen ? 0 : -20, // slide in from the left when open
         width: sidebarOpen ? '30%' : '0%', // take up 20% of the screen when open
         config: {
-            duration: 1000
+            duration: 200
         },
     });
 

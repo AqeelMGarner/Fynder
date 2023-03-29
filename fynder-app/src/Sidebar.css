@@ -4,10 +4,10 @@
     bottom: 0;
     left: 0;
     overflow: auto;
-    background-color: #fff;
+    background-color: #eea47fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     z-index: 999;
-    padding: 20px;
+    /* padding: 20px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,16 +17,29 @@
 }
 
 .place-name {
-    font-size: 15px;
+    font-size: 24px;
+    color: #00539cff;
 }
-
 
 ul {
     list-style: none;
 }
 
+sidebar ul {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+
+
 img {
     border-radius: 50%;
-    width: 20%;
-    height: auto;
+    height: 110px;
+    width: 110px;
 }
