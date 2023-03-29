@@ -14,7 +14,7 @@ import Sidebar from "./Sidebar";
 
 function PlaceCards() {
     const { placesInfo, topFive, setTopFive } = useContext(GlobalContext);
-    const { toggleSidebar } = React.useContext(GlobalContext)
+    const { toggleSidebar } = useContext(GlobalContext)
     // Much of the below code is copied and modified from github user 3DJakob
 
     const [currentIndex, setCurrentIndex] = useState(placesInfo - 1)
@@ -87,7 +87,7 @@ function PlaceCards() {
         console.log("Top Five: ", topFive);
         setTopFive(topFive)
         // Toggle sidebar open/close state
-        // toggleSidebar();
+        toggleSidebar();
     };
 
     return (

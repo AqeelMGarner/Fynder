@@ -23,14 +23,16 @@ export const GlobalContext = createContext();
 export const GlobalProvider = ({ children }) => {
     const [placesInfo, setPlacesInfo] = useState([]);
     const [topFive, setTopFive] = useState([]);
-    const sidebarContext = React.createContext({
-        sidebarOpen: false,
-        toggleSidebar: () => { },
-    });
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+
+    const toggleSidebar = () => {
+        setSidebarOpen(prev => !prev);
+    }
+
 
 
     return (
-        <GlobalContext.Provider value={{ placesInfo, setPlacesInfo, topFive, setTopFive, sidebarContext }}>
+        <GlobalContext.Provider value={{ placesInfo, setPlacesInfo, topFive, setTopFive, sidebarOpen, toggleSidebar }}>
             {children}
         </GlobalContext.Provider >
     );
