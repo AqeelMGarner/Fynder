@@ -28,6 +28,7 @@ function PlaceCards(props) {
         }
     }
 
+
     const outOfFrame = (name) => {
         console.log(name + ' left the screen')
     }
@@ -41,7 +42,7 @@ function PlaceCards(props) {
         <div>
             <div className="PlaceCards__cardContainer">
                 {places.map((place) => (
-                    
+
                     <TinderCard
                         className="swipe"
                         key={place.name}
@@ -63,10 +64,12 @@ function PlaceCards(props) {
 
                         </div>
                     </TinderCard>
-                    
-                    
+
+
                 ))}
+
             </div>
+
 
         </div>
     );
