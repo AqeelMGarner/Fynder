@@ -54,7 +54,7 @@ function Buttons({ name, image }) {
     }
 
     return (
-        <div className="Buttons">
+        <div className="buttons">
             <IconButton>
                 <ThumbDownIcon className="ThumbDownIcon" fontSize="large" />
             </IconButton>
