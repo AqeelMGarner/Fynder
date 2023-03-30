@@ -1,16 +1,11 @@
-
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import TinderCard from "react-tinder-card";
-
 import { GlobalContext } from "./context/GlobalContext";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { IconButton } from "@mui/material";
 import "./PlaceCards.css";
-
-
-
 
 function PlaceCards() {
     const { placesInfo, topFive, setTopFive } = useContext(GlobalContext);
@@ -22,7 +17,6 @@ function PlaceCards() {
     const [lastDirection, setLastDirection] = useState()
     const currentIndexRef = useRef(currentIndex)
     const [childRefs, setChildRefs] = useState([]);
-
 
     useEffect(() => {
         setChildRefs(
@@ -39,7 +33,6 @@ function PlaceCards() {
 
     const canSwipe = currentIndex >= 0
 
-
     // This tracks whichever card was swiped right/thumbsup'd and saves it to local storage
     const swiped = (direction, name, image, wiki, index) => {
         setLastDirection(direction)
@@ -50,7 +43,6 @@ function PlaceCards() {
             const savedPlaces = JSON.parse(localStorage.getItem('savedPlaces')) || [];
             savedPlaces.push({ name: name, image: image, wiki: wiki });
             localStorage.setItem('savedPlaces', JSON.stringify(savedPlaces));
-
         }
         const savedPlaces = JSON.parse(localStorage.getItem("savedPlaces")) || [];
 
@@ -65,30 +57,23 @@ function PlaceCards() {
         setTopFive(topFive)
     }
 
-
     const outOfFrame = (name, idx) => {
         currentIndexRef.current >= idx && childRefs[idx].current.restoreCard()
     }
 
-
     const swipe = async (dir) => {
         if (canSwipe && currentIndex < placesInfo.length) {
-
             await childRefs[currentIndex].current.swipe(dir)
         }
-
     }
 
     // Here's where 3DJakob's code ends (Thank you, 3DJakob)
-
     const favoriteClick = () => {
-
         toggleSidebar();
     };
 
     return (
         <div>
-
             <div className="PlaceCards__cardContainer">
                 {placesInfo.map((place, index) => (
 
@@ -100,8 +85,6 @@ function PlaceCards() {
                         flickOnSwipe='true'
                         onCardLeftScreen={() => outOfFrame(place.name, index)}
                         onSwipe={(dir) => swiped(dir, place.name, place.image, place.wiki, index)}
-
-
                     >
                         <div
                             style={{ backgroundImage: `url(${place.image})` }}
@@ -115,10 +98,7 @@ function PlaceCards() {
                         </div>
                     </TinderCard>
 
-
                 ))}
-
-
             </div>
             {
                 placesInfo.length > 0 && (
@@ -128,7 +108,6 @@ function PlaceCards() {
                         <IconButton> <ThumbUpIcon className="ThumbUpIcon" fontSize="large" style={{ backgroundColor: !canSwipe }} onClick={() => swipe('right')}>Swipe right!</ThumbUpIcon> </IconButton>
                     </div>)
             }
-
         </div >
     );
 }
