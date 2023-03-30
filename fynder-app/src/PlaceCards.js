@@ -1,15 +1,16 @@
 
-import React, { useContext, useEffect, useState, useMemo, useRef } from 'react';
-=======
-
-
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import TinderCard from "react-tinder-card";
+
 import { GlobalContext } from "./context/GlobalContext";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { IconButton } from "@mui/material";
 import "./PlaceCards.css";
+
+
+
 
 function PlaceCards() {
     const { placesInfo, topFive, setTopFive } = useContext(GlobalContext);
@@ -20,9 +21,6 @@ function PlaceCards() {
     const [currentIndex, setCurrentIndex] = useState(placesInfo - 1)
     const [lastDirection, setLastDirection] = useState()
     const currentIndexRef = useRef(currentIndex)
-
-
-    // initialize childRefs array
     const [childRefs, setChildRefs] = useState([]);
 
 
@@ -38,6 +36,7 @@ function PlaceCards() {
         setCurrentIndex(val)
         currentIndexRef.current = val
     }
+
     const canSwipe = currentIndex >= 0
 
 
@@ -51,6 +50,7 @@ function PlaceCards() {
             const savedPlaces = JSON.parse(localStorage.getItem('savedPlaces')) || [];
             savedPlaces.push({ name: name, image: image, wiki: wiki });
             localStorage.setItem('savedPlaces', JSON.stringify(savedPlaces));
+
         }
         const savedPlaces = JSON.parse(localStorage.getItem("savedPlaces")) || [];
 
@@ -65,40 +65,30 @@ function PlaceCards() {
         setTopFive(topFive)
     }
 
+
     const outOfFrame = (name, idx) => {
         currentIndexRef.current >= idx && childRefs[idx].current.restoreCard()
     }
 
+
     const swipe = async (dir) => {
         if (canSwipe && currentIndex < placesInfo.length) {
 
-            await childRefs[currentIndex].current.swipe(dir) // Swipe the card!
-
+            await childRefs[currentIndex].current.swipe(dir)
         }
 
     }
 
-
-    const favoriteClick = () => {
-        const savedPlaces = JSON.parse(localStorage.getItem("savedPlaces")) || [];
-        // Get the last 5 unique saved places, omitting duplicates
-        const topFive = [];
-        for (let i = savedPlaces.length - 1; i >= 0 && topFive.length < 5; i--) {
-            if (!topFive.some((place) => place.name === savedPlaces[i].name)) {
-                topFive.push(savedPlaces[i]);
-            }
-        }
-        console.log("Top Five: ", topFive);
-        setTopFive(topFive)
-        // Toggle sidebar open/close state
     // Here's where 3DJakob's code ends (Thank you, 3DJakob)
 
     const favoriteClick = () => {
+
         toggleSidebar();
     };
 
     return (
         <div>
+
             <div className="PlaceCards__cardContainer">
                 {placesInfo.map((place, index) => (
 
@@ -109,8 +99,9 @@ function PlaceCards() {
                         preventSwipe={["up", "down"]}
                         flickOnSwipe='true'
                         onCardLeftScreen={() => outOfFrame(place.name, index)}
-
                         onSwipe={(dir) => swiped(dir, place.name, place.image, place.wiki, index)}
+
+
                     >
                         <div
                             style={{ backgroundImage: `url(${place.image})` }}
@@ -120,9 +111,14 @@ function PlaceCards() {
                                 <h3>{place.name}</h3>
                                 <p>{place.text}</p>
                             </div>
+
                         </div>
                     </TinderCard>
+
+
                 ))}
+
+
             </div>
             {
                 placesInfo.length > 0 && (
@@ -132,6 +128,7 @@ function PlaceCards() {
                         <IconButton> <ThumbUpIcon className="ThumbUpIcon" fontSize="large" style={{ backgroundColor: !canSwipe }} onClick={() => swipe('right')}>Swipe right!</ThumbUpIcon> </IconButton>
                     </div>)
             }
+
         </div >
     );
 }
