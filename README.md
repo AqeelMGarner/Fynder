@@ -20,9 +20,10 @@ N/A
 ## Usage
 
 The usage of this project are to help the user find local tourist spots to visit, for a visual aid on how the application works please refer to the screenshots below.
-![alt text](assets/images/screenshot-1.png)
-![alt text](assets/images/screenshot-2.png)
-![alt text](assets/images/screenshot-3.png)
+![alt text](assets/images/Screenshot1.png)
+![alt text](assets/images/Screenshot2.png)
+![alt text](assets/images/Screenshot3.png)
+
 
 ## Credits
 
