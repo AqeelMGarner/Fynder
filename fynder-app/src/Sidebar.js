@@ -14,7 +14,6 @@ function Sidebar() {
     }, [topFive]);
 
     const sidebarAnimation = useSpring({
-
         left: sidebarOpen ? 0 : -20, // slide in from the left when open
         width: sidebarOpen ? '20%' : '0%', // take up 20% of the screen when open
         config: {
@@ -26,13 +25,11 @@ function Sidebar() {
         window.open(url);
     };
 
-
     return (
         <animated.div className={`sidebar ${sidebarOpen ? 'open' : ''}`} style={sidebarAnimation}>
             <ul>
                 {currentTopFive.map((place, index) => (
                     <li key={index}>
-
                         <div onClick={() => handleClick(place.wiki)}>
                             <img src={place.image} alt={place.name} />
                             <h2 className="place-name">{place.name}</h2>
