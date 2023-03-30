@@ -2,9 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import { GlobalContext } from "./context/GlobalContext";
 import "./SearchBar.css";
 
-
-
-
 function SearchBar(props) {
     const [searchQuery, setSearchQuery] = useState("");
     const [longitude, setLongitude] = useState("");
@@ -63,7 +60,6 @@ function SearchBar(props) {
         }
     }, [xids]);
 
-
     // This maps through the unique ids (xids) and creates objects out of desired information, it then passes it up to a global variable called placesInfo
     const handlePlacesInfo = () => {
         const options = {
@@ -103,7 +99,6 @@ function SearchBar(props) {
     };
 
     return (
-
         <div>
             <nav class="navbar bg-light">
                 <div class="container-fluid" className='navBar'>
