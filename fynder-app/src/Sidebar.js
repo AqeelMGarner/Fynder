@@ -8,6 +8,7 @@ function Sidebar() {
     const { sidebarOpen } = React.useContext(GlobalContext);
     const [currentTopFive, setCurrentTopFive] = useState([]);
 
+    // This makes sure the sidebar is dynamically updated with the most recent push to topFive
     useEffect(() => {
         setCurrentTopFive(topFive);
     }, [topFive]);
@@ -22,7 +23,7 @@ function Sidebar() {
     });
 
     const handleClick = (url) => {
-        window.location.href = url;
+        window.open(url);
     };
 
 
@@ -34,7 +35,7 @@ function Sidebar() {
 
                         <div onClick={() => handleClick(place.wiki)}>
                             <img src={place.image} alt={place.name} />
-                            <h3 className="place-name">{place.name}</h3>
+                            <h2 className="place-name">{place.name}</h2>
                         </div>
                     </li>
                 ))}
