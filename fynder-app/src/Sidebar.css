@@ -42,3 +42,8 @@ img {
     height: 110px;
     width: 110px;
 }
+
+.sidebar ul li div:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
