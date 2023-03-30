@@ -7,7 +7,6 @@
     background-color: #eea47fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     z-index: 999;
-    /* padding: 20px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
