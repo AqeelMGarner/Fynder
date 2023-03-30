@@ -4,15 +4,8 @@ import { IconButton } from "@mui/material";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import "./Buttons.css"
-import { useFavorite } from "./context/GlobalContext";
-import TinderCard from "react-tinder-card";
-
-
-
 
 function Buttons({ name, image }) {
-    // const { favorite, setFavorite } = useFavorite()
     const [places, setPlaces] = useState([])
     const [loading, setLoading] = useState(true)
     const { addPlace } = useContext(GlobalContext);
@@ -26,15 +19,11 @@ function Buttons({ name, image }) {
             setLoading(false)
         }, 1000);
     }, []);
-    // const savedPlaces = () => { }
     useEffect(() => {
         if (loading === false) {
             localStorage.setItem("places", JSON.stringify(places))
         }
     }, [places]);
-    // useEffect(() => {
-    //     console.log(favorite);
-    // }, [favorite]);
 
     function saved() {
         const newPlace = {
@@ -42,7 +31,6 @@ function Buttons({ name, image }) {
             image: image,
         };
         addPlace(newPlace);
-        // setPlaces([...places, newPlace])
         const savedPlaces = JSON.parse(localStorage.getItem("savedPlaces")) || [];
         savedPlaces.push(newPlace);
         localStorage.setItem("savedPlaces", JSON.stringify(savedPlaces));
